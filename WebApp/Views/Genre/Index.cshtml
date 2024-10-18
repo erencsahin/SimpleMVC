@@ -1,0 +1,52 @@
+﻿@model List<Genre>
+
+@if (TempData["success"] != null)
+{
+    <h2 style="color:red">@TempData["success"]</h2>
+}
+
+
+<div class="container">
+    <div class="row pt-3 pb-4">
+        <div>
+            <h1>Genres</h1>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Genre
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var genre in Model)
+            {
+                <tr>
+                    <td>@genre.Id</td>
+                    <td>@genre.Name</td>
+                    <td><a asp-controller="Genre" asp-action="Update" asp-route-id="@genre.Id" type="button" class="btn btn-warning" style="width:250px">Update</a></td>
+                    <td><a asp-controller="Genre" asp-action="Delete" asp-route-id="@genre.Id" type="button" class="btn btn-danger" style="width:250px">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <div class="row pt-3 pb-2">
+        <div>
+            <a asp-controller="Genre" asp-action="Add" class="btn btn-lg btn-success" type="button">New Genre</a>
+        </div>
+    </div>
+</div>
